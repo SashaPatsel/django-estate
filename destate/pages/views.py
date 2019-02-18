@@ -7,3 +7,4 @@ def index(req):
 
 def about(req):
     return render(req, "pages/about.html")
+    
