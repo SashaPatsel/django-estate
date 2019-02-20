@@ -1,9 +1,15 @@
 from django.shortcuts import render
 
+from .models import Listing
 # Create your views here.
 
 def index(req):
-    return render(req, "listings/listings.html")
+    listings = Listing.objects.all()
+    context = {
+        "listings": listings
+    }
+    print(listings)
+    return render(req, "listings/listings.html", context)
 
 def listing(req):
     return render(req, "listings/listing.html")
