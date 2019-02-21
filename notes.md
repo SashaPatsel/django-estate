@@ -5,3 +5,4 @@
 - See SQL translation of migrations: `python manage.py sqlmigrate <model> <number of migration file>`
 - Create super user: ``
 (username: sasha, p: 123456789)
+- rerun static files: `python manage.py collectstatic`

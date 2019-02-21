@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 # Create your views here.
 def register(req):
@@ -13,7 +14,16 @@ def register(req):
 
         #check if passwords match
         if password == password2:
-            return
+            #check username
+            if User.objects.filter(username=username).exists():
+                messages.error(req, "Username already exists")
+                return redirect("register")
+            else:
+                if User.objects.filter(email=email).exists():
+                    messages.error(req, "email already exists")
+                    return redirect("register")
+                else:
+                    return
         else:
             messages.error(req, "Passwords do not match")
             return redirect("register") 
